@@ -26,6 +26,8 @@
   --amber-pale: #FAEEDA;
   --gray-bar: #B4B2A9;
   --gray-pale: #F1EFE8;
+  --red: #D9381E;
+  --red-pale: #FDE8E5;
   --chart-grid: rgba(128, 128, 128, 0.15);
   --chart-border: rgba(128, 128, 128, 0.3);
   
@@ -51,6 +53,8 @@
   --amber-pale: #33230F;
   --gray-bar: #6E6D68;
   --gray-pale: #222222;
+  --red: #E86A58;
+  --red-pale: #3A1612;
   --chart-grid: rgba(255, 255, 255, 0.08);
   --chart-border: rgba(255, 255, 255, 0.15);
 }
@@ -299,6 +303,13 @@ input[type=range]::-moz-range-thumb {
 }
 .warn b { color: var(--amber); font-weight: 600; }
 
+.disclaimer-box {
+  background: var(--red-pale); border: 1px solid var(--red);
+  padding: 20px 24px; border-radius: 4px; font-size: 14px;
+  line-height: 1.6; color: var(--ink); margin-bottom: 40px;
+}
+.disclaimer-box b { color: var(--red); font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; display: block; margin-bottom: 8px;}
+
 /* ─── pull quote ─────────────────────────────────── */
 .pullquote {
   font-family: var(--serif); font-style: italic; font-weight: 400;
@@ -309,7 +320,7 @@ input[type=range]::-moz-range-thumb {
 .pullquote .mark { font-family: var(--serif); font-size: 48px; color: var(--amber); line-height: 0; vertical-align: -10px; font-style: italic; margin-right: 4px; }
 
 /* ─── footer ─────────────────────────────────────── */
-footer { margin-top: 80px; padding: 32px 0 64px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.7; color: var(--ink-mute); }
+footer { padding: 0 0 64px; font-size: 12px; line-height: 1.7; color: var(--ink-mute); }
 footer .colophon { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; }
 footer a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--teal-soft); }
 footer a:hover { background: var(--teal-pale); }
@@ -358,7 +369,7 @@ footer a:hover { background: var(--teal-pale); }
     <span class="section-num">I.</span>
     <h2>The accumulation <em>— what grows</em></h2>
   </div>
-  <p class="section-intro">Every euro you put on the pensioenrekening is deductible from box 1 income up to your jaarruimte. The Belastingdienst hands you back 35.82% — or 49.50% above €75,518 — and the model reinvests that refund along with your monthly contribution.</p>
+  <p class="section-intro">Every euro you put on the pensioenrekening is deductible from box 1 income up to your jaarruimte. The Belastingdienst refunds your contribution according to the three working-age brackets, and the model reinvests that refund along with your monthly deposit.</p>
 
   <div class="controls">
     <div class="control">
@@ -430,7 +441,7 @@ footer a:hover { background: var(--teal-pale); }
 </section>
 
 <div class="pullquote">
-  <span class="mark">"</span>The trick isn't the upfront refund — it's the <em>rate arbitrage</em>. You deduct at 49.5% during your career and withdraw at perhaps 25% in retirement. Compound that gap over thirty-seven years.
+  <span class="mark">"</span>The trick isn't the upfront refund — it's the <em>rate arbitrage</em>. You deduct at your higher working-age brackets and withdraw at lower retirement brackets. Compound that gap over thirty-seven years.
 </div>
 
 <section id="payout">
@@ -504,12 +515,17 @@ footer a:hover { background: var(--teal-pale); }
 </section>
 
 <footer>
+  <div class="disclaimer-box">
+    <b>Disclaimer: Not Financial Advice</b>
+    This calculator is provided for educational and illustrative purposes only and does not constitute financial, tax, or legal advice. It makes simplifying assumptions (such as constant real income, zero employer pension accrual (Factor A), and the exclusion of specific tax credits like <em>heffingskortingen</em>). Always consult a certified financial planner and verify your actual <em>jaarruimte</em> with the Belastingdienst before making investment decisions. Past performance does not guarantee future results.
+  </div>
+
   <div class="colophon">A note on the math.</div>
-  <p>Section I assumes Factor A = 0 (no employer pension accrual), constant real income, and the 2026 jaarruimte formula: 30% × (income − €19,172), capped at €137,800 income. Marginal tax follows the standard box 1 schedule for working-age (35.82% / 49.50% above €75,518). DEGIRO's pensioenrekening fee of 0.20%/year is deducted monthly from the balance.</p>
+  <p>Section I assumes Factor A = 0 (no employer pension accrual), constant real income, and the 2026 jaarruimte formula: 30% × (income − €19,172), capped at €137,800 income. Deductions follow the working-age 3-tier box 1 schedule (35.75% / 37.56% / 49.50%). DEGIRO's pensioenrekening fee of 0.20%/year is deducted monthly from the balance.</p>
   <br />
-  <p>Section II uses an ordinary annuity formula — pot × i / (1 − (1+i)<sup>−n</sup>) — assuming the remaining balance earns the chosen return during the payout phase. AOW gross is €1,637.57/month single or €1,122.12/month per partner, plus vakantiegeld accrued at €106.55 (single) or €76.10 (couple) per month. Tax follows 2026 AOW-age box 1 brackets (17.92% / 37.56% / 49.50%) but excludes heffingskortingen, which typically reduce annual tax by another €1,500–€3,500.</p>
+  <p>Section II uses an ordinary annuity formula — pot × i / (1 − (1+i)<sup>−n</sup>) — assuming the remaining balance earns the chosen return during the payout phase. AOW gross is €1,637.57/month single or €1,122.12/month per partner, plus vakantiegeld accrued at €106.55 (single) or €76.10 (couple) per month. Tax follows the 2026 AOW-age 3-tier box 1 brackets (17.85% / 37.56% / 49.50%) but excludes heffingskortingen, which typically reduce the total annual tax bill further.</p>
   <br />
-  <p>This is a model, not advice. Verify your actual jaarruimte at <a href="https://www.belastingdienst.nl" target="_blank" rel="noopener">belastingdienst.nl</a>, your projected AOW age at <a href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a>, and your real pension accrual at <a href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">mijnpensioenoverzicht.nl</a>. Past performance does not guarantee future returns.</p>
+  <p>Verify your actual jaarruimte at <a href="https://www.belastingdienst.nl" target="_blank" rel="noopener">belastingdienst.nl</a>, your projected AOW age at <a href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a>, and your real pension accrual at <a href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">mijnpensioenoverzicht.nl</a>.</p>
 </footer>
 
 </div>
@@ -530,17 +546,19 @@ footer a:hover { background: var(--teal-pale); }
     currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
-    if(window.updateAccumulation) window.updateAccumulation(); // redraw chart grid lines
+    if(window.updateAccumulation) window.updateAccumulation();
   });
 })();
+
+// ═══ 2026 Global Tax Constants ═══════════════════════════════════════
+const B1 = 38883, B2 = 78426;
 
 // ═══ Section I — Accumulation ════════════════════════════════════════
 (function() {
   const FRANCHISE = 19172;
   const MAX_INCOME = 137800;
-  const BRACKET = 75518; // Fixed Working-Age bracket
-  const R1 = 0.3582;
-  const R2 = 0.4950;
+  // Working age rates
+  const R1 = 0.3575, R2 = 0.3756, R3 = 0.4950; 
   const FEE = 0.002;
 
   const $ = (id) => document.getElementById(id);
@@ -552,11 +570,32 @@ footer a:hover { background: var(--teal-pale); }
     const capped = Math.min(income, MAX_INCOME);
     return Math.max(0, (capped - FRANCHISE) * 0.30);
   }
+  
   function taxSaved(income, deduction) {
-    const above = Math.max(0, income - BRACKET);
-    const top = Math.min(deduction, above);
-    const bot = deduction - top;
-    return top * R2 + bot * R1;
+    let remIncome = income;
+    let remDeduction = deduction;
+    let saved = 0;
+
+    // Bracket 3 (> 78,426)
+    if (remIncome > B2) {
+      let chunk = Math.min(remDeduction, remIncome - B2);
+      saved += chunk * R3;
+      remDeduction -= chunk;
+      remIncome -= chunk;
+    }
+    // Bracket 2 (38,883 to 78,426)
+    if (remDeduction > 0 && remIncome > B1) {
+      let chunk = Math.min(remDeduction, remIncome - B1);
+      saved += chunk * R2;
+      remDeduction -= chunk;
+      remIncome -= chunk;
+    }
+    // Bracket 1 (up to 38,883)
+    if (remDeduction > 0) {
+      let chunk = Math.min(remDeduction, remIncome);
+      saved += chunk * R1;
+    }
+    return saved;
   }
 
   function simulate(p) {
@@ -615,8 +654,8 @@ footer a:hover { background: var(--teal-pale); }
     $('m-growth').textContent = fmtEur(Math.max(0, r.growthFinal));
     $('m-jr').textContent = fmtEur(r.jr);
 
-    const marginal = p.income > BRACKET ? R2 : R1;
-    $('info').innerHTML = 'At <b>' + fmtEur(p.income) + '</b> income, your jaarruimte is <b>' + fmtEur(r.jr) + '/year</b> tax-deductible. Your marginal rate is ' + (marginal*100).toFixed(2) + '%, so you reclaim about <b>' + fmtEur(r.annualTax) + ' per year</b> from the Belastingdienst — reinvested in the model above.';
+    const effRate = r.deductible > 0 ? (r.annualTax / r.deductible) * 100 : 0;
+    $('info').innerHTML = 'At <b>' + fmtEur(p.income) + '</b> income, your jaarruimte is <b>' + fmtEur(r.jr) + '/year</b> tax-deductible. Based on your inputs, you reclaim about <b>' + fmtEur(r.annualTax) + ' per year</b> from the Belastingdienst (an effective refund rate of ' + effRate.toFixed(1) + '%) — reinvested in the model above.';
 
     const warn = $('warn');
     if (r.annualDeposit > r.jr) {
@@ -689,8 +728,9 @@ footer a:hover { background: var(--teal-pale); }
 (function() {
   const AOW_SINGLE = 1637.57; const AOW_COUPLE = 1122.12;
   const AOW_VAK_SINGLE = 106.55; const AOW_VAK_COUPLE = 76.10;
-  const B1 = 38883, B2 = 78426;
-  const RA1 = 0.1792, RA2 = 0.3756, RA3 = 0.4950;
+  
+  // Pension age rates (born >1946)
+  const RA1 = 0.1785, RA2 = 0.3756, RA3 = 0.4950;
 
   let household = 'single';
   const $ = (id) => document.getElementById(id);
