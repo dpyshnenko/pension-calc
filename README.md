@@ -2,6 +2,8 @@
 
 A standalone, interactive, single-file HTML calculator designed for Dutch retail investors to model their retirement using a *pensioenrekening* (pension account, e.g., via DEGIRO, Meesman, or Brand New Day) alongside the state pension (AOW).
 
+https://dpyshnenko.github.io/pension-calc/
+
 ## Overview
 
 This tool provides a two-part model based on the **2026 Dutch tax rules**:
